@@ -17,7 +17,7 @@ body {
     margin: 0;
 }
 
-div {
+main {
     background-color: white;
     margin: 40px auto;
     padding: 25px;
@@ -25,6 +25,23 @@ div {
     text-align: center;
 }
 
+main p {
+    background-color: #f4f4f4;
+    padding: 18px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+main a {
+    color: #222831;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main p:hover {
+    background-color: #e8ebee;
+}
 
 footer {
     background-color: #222831;
