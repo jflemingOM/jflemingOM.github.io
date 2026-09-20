@@ -25,21 +25,19 @@ main {
     text-align: center;
 }
 
-main p {
+main a {
+    display: block;
     background-color: #f0f2ff;
+    color: #3b4cca;
     padding: 18px;
     margin: 15px 0;
     border: 1px solid #c8ceff;
     border-radius: 8px;
-}
-
-main a {
-    color: #3b4cca;
     text-decoration: none;
     font-weight: bold;
 }
 
-main p:hover {
+main a:hover {
     background-color: #dfe4ff;
 }
 
