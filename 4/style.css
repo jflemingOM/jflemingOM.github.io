@@ -1,0 +1,616 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0f172a;
+    color: #f8fafc;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-header {
+    min-height: 240px;
+    background: linear-gradient(#0007, #0007), url("img/header.png") center 25% / cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.site-logo {
+    color: white;
+    text-decoration: none;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.03em;
+    text-align: center;
+    text-shadow: 0 3px 8px #0008;
+}
+
+.navbar {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: center;
+    transform: translateY(10px);
+}
+
+.nav-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nav-links a {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    background: #0004;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    background: #0009;
+    transform: translateY(-2px);
+}
+
+main {
+    width: 100%;
+    flex: 1;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    color: #f8fafc;
+    font-weight: 800;
+}
+
+h2 {
+    color: #f8fafc;
+    font-weight: 750;
+}
+
+h3 {
+    color: #cbd5e1;
+    font-weight: 700;
+}
+
+.section {
+    width: 100%;
+    padding: 4rem 1rem;
+    background: #1e293b;
+}
+
+.section-heading {
+    margin: 0 0 1.25rem;
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.section-heading::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin: 1rem auto 0;
+    background: #38bdf8;
+    border-radius: 2px;
+}
+
+.section-intro {
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+}
+
+.gray {
+    background: #0f172a;
+}
+
+.about-me-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-me-content img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.about-me-text {
+    text-align: center;
+}
+
+.about-me-text p,
+.information-section p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    background: #38bdf8;
+    color: #020617;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    transition: 0.2s;
+}
+
+.button:hover,
+.button:focus {
+    background: #0ea5e9;
+    transform: translateY(-2px);
+}
+
+.benefit-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.benefit-grid > div {
+    padding: 1.75rem;
+    border-top: 4px solid #38bdf8;
+    border-radius: 8px;
+    background: #334155;
+    color: #f8fafc;
+    text-align: center;
+    box-shadow: 0 3px 10px #00000014;
+    transition: 0.2s;
+}
+
+.benefit-grid > div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px #0000001f;
+}
+
+.benefit-grid h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.3rem;
+}
+
+.information-section {
+    text-align: center;
+}
+
+.information-section > div {
+    max-width: 900px;
+    margin: auto;
+}
+
+.homepage-cta {
+    padding: 4rem 1rem;
+    background: #020617;
+    color: #f8fafc;
+    text-align: center;
+}
+
+.homepage-cta h2 {
+    margin-top: 0;
+    color: #f8fafc;
+    font-size: 2rem;
+}
+
+.homepage-cta p {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+}
+
+.homepage-cta .button {
+    background: #38bdf8;
+    color: #020617;
+}
+
+.homepage-cta .button:hover,
+.homepage-cta .button:focus {
+    background: #0ea5e9;
+}
+
+.muscle-grid {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.muscle-card {
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: #334155;
+    color: #f8fafc;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.muscle-card img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+.muscle-card h2 {
+    margin: 0.75rem 0 0;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.muscle-card:hover,
+.muscle-card:focus {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
+    box-shadow: 0 5px 15px #00000026;
+}
+
+.site-footer {
+    min-height: 70px;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: #020617;
+    color: white;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.back-button {
+    display: inline-block;
+    margin: 1.5rem 1rem 0;
+    padding: 0.6rem 1rem;
+    background-color: #334155;
+    color: #f8fafc;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.back-button:hover,
+.back-button:focus {
+    background-color: #475569;
+    transform: translateY(-2px);
+}
+
+.exercise-gif {
+    height: 220px;
+    object-fit: cover;
+}
+
+.exercise-images {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.exercise-images img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.exercise-information {
+    max-width: 1000px;
+    margin: 3rem auto 0;
+    padding: 2rem;
+    background-color: #334155;
+    color: #f8fafc;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.exercise-information h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.exercise-information p {
+    max-width: 850px;
+    margin: 0 auto 1.5rem;
+}
+
+.training-disclaimer {
+    max-width: 850px;
+    margin: 0 auto 3rem;
+    padding: 1rem 1.5rem;
+    background: #334155;
+    border-left: 4px solid #38bdf8;
+    border-radius: 6px;
+    color: #cbd5e1;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.training-category-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.training-category {
+    width: 100%;
+    min-width: 0;
+}
+
+.training-category-heading {
+    margin: 0 0 1.25rem;
+    color: #f8fafc;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.training-card-grid {
+    height: 650px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.training-category > img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem;
+    border-radius: 8px;
+}
+
+.training-card {
+    width: 100%;
+    min-height: 230px;
+    padding: 1.25rem;
+    background: #334155;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px #00000014;
+    transition: 0.2s;
+}
+
+.training-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px #00000026;
+}
+
+.training-card h3 {
+    margin: 0 0 0.75rem;
+    color: #38bdf8;
+    font-size: 1.15rem;
+}
+
+.training-card p {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.term-image {
+    position: relative;
+    width: 100%;
+}
+
+.term-image img {
+    width: 100%;
+    display: block;
+}
+
+.term-image cite {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.4rem;
+    font-size: 0.65rem;
+    color: white;
+    background: #0009;
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #334155;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-form label {
+    margin-top: 0.75rem;
+    font-weight: bold;
+    color: #f8fafc;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.contact-form .button {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+@media (min-width: 700px) {
+    .section {
+        padding: 5rem 2rem;
+    }
+
+    .site-logo {
+        font-size: 4rem;
+    }
+
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 0;
+    }
+
+    .about-me-content {
+        flex-direction: row;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .about-me-content img {
+        width: 40%;
+        margin: 0;
+    }
+
+    .about-me-text {
+        flex: 1;
+    }
+
+    .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .muscle-card img {
+        max-height: 250px;
+    }
+
+    .homepage-cta {
+        padding: 5rem 2rem;
+    }
+
+    .exercise-images {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .exercise-images img {
+        width: 45%;
+        max-width: 500px;
+    }
+
+    .training-category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .training-card {
+        min-height: 200px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .site-logo {
+        font-size: 5rem;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+    }
+
+    .nav-links a {
+        padding: 0.6rem 1rem;
+    }
+
+    .section-heading {
+        font-size: 2.8rem;
+    }
+
+    .benefit-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .benefit-grid > div:nth-child(4) {
+        grid-column: 1;
+    }
+
+    .benefit-grid > div:nth-child(5) {
+        grid-column: 2;
+    }
+
+    .training-category-grid {
+        max-width: 1200px;
+        gap: 2rem;
+    }
+
+    .training-category-heading {
+        font-size: 1.7rem;
+    }
+
+    .training-card {
+        min-height: 210px;
+        flex-shrink: 0;
+    }
+}
