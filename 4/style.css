@@ -380,7 +380,7 @@ h3 {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 2rem;
     align-items: start;
 }
@@ -398,7 +398,7 @@ h3 {
 }
 
 .training-card-grid {
-    height: 650px;
+    height: 500px;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -414,9 +414,32 @@ h3 {
     border-radius: 8px;
 }
 
+.term-image {
+    position: relative;
+    width: 100%;
+}
+
+.term-image img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
+.term-image cite {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.4rem;
+    font-size: 0.65rem;
+    color: white;
+    background: #0009;
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+}
+
 .training-card {
     width: 100%;
     min-height: 230px;
+    flex-shrink: 0;
     padding: 1.25rem;
     background: #334155;
     border-radius: 10px;
@@ -441,27 +464,6 @@ h3 {
     color: #f8fafc;
     font-size: 0.9rem;
     line-height: 1.5;
-}
-
-.term-image {
-    position: relative;
-    width: 100%;
-}
-
-.term-image img {
-    width: 100%;
-    display: block;
-}
-
-.term-image cite {
-    position: absolute;
-    right: 0.5rem;
-    bottom: 0.4rem;
-    font-size: 0.65rem;
-    color: white;
-    background: #0009;
-    padding: 0.15rem 0.35rem;
-    border-radius: 3px;
 }
 
 .contact-form {
@@ -562,12 +564,16 @@ h3 {
     }
 
     .training-category-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 
+    .training-card-grid {
+        height: 600px;
+    }
+
     .training-card {
-        min-height: 200px;
+        min-height: 230px;
     }
 }
 
@@ -603,14 +609,19 @@ h3 {
     .training-category-grid {
         max-width: 1200px;
         gap: 2rem;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .training-category-heading {
         font-size: 1.7rem;
     }
 
+    .training-card-grid {
+        height: 650px;
+    }
+
     .training-card {
-        min-height: 210px;
+        min-height: 230px;
         flex-shrink: 0;
     }
 }
