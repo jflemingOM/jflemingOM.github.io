@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             isSnowboarding = true;
-            changeButton.textContent = "Back to Skiing";
         } catch (error) {
             console.error("Error loading snowboarding data:", error);
             alert("Could not load the snowboarding data. Make sure you are using Live Server.");
