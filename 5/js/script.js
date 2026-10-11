@@ -1,76 +1,110 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const button = document.getElementById("changeThemeBtn");
-    const hero = document.getElementById("heroSection");
+    const changeButton = document.getElementById("changeThemeBtn");
+    const heroSection = document.getElementById("heroSection");
 
-    const ids = [
-        "styleName", "heroTitle", "heroDesc",
-        "sec1Title", "sec1Subtitle", "sec2Title", "sec2Subtitle"
-    ];
+    let isSnowboarding = false;
+    let snowboardingData = null;
 
-    const grids = ["sec1Grid", "sec2Grid"];
-    const originalText = ids.map(id => document.getElementById(id).textContent);
-    const originalCards = grids.map(getCards);
-    const originalTitle = document.title;
-    let snowboarding = false;
-    let data;
+    const skiingContent = {
+        title: document.title,
+        header: document.getElementById("styleName").textContent,
+        heroTitle: document.getElementById("heroTitle").textContent,
+        heroDesc: document.getElementById("heroDesc").textContent,
+        sec1Title: document.getElementById("sec1Title").textContent,
+        sec1Subtitle: document.getElementById("sec1Subtitle").textContent,
+        sec2Title: document.getElementById("sec2Title").textContent,
+        sec2Subtitle: document.getElementById("sec2Subtitle").textContent,
+        sec1Cards: getCards("sec1Grid"),
+        sec2Cards: getCards("sec2Grid")
+    };
 
-    button.addEventListener("click", async function () {
-        if (!snowboarding) {
-            try {
-                if (!data) {
-                    const response = await fetch("js/boardingData.json");
-                    if (!response.ok) throw new Error("JSON failed to load");
-                    data = await response.json();
+    const skiingImage = new URL("img/alpineSki.jpeg", document.baseURI).href;
+
+    changeButton.addEventListener("click", async function () {
+        if (isSnowboarding) {
+            document.title = skiingContent.title;
+            document.getElementById("styleName").textContent = skiingContent.header;
+            document.getElementById("heroTitle").textContent = skiingContent.heroTitle;
+            document.getElementById("heroDesc").textContent = skiingContent.heroDesc;
+            document.getElementById("sec1Title").textContent = skiingContent.sec1Title;
+            document.getElementById("sec1Subtitle").textContent = skiingContent.sec1Subtitle;
+            document.getElementById("sec2Title").textContent = skiingContent.sec2Title;
+            document.getElementById("sec2Subtitle").textContent = skiingContent.sec2Subtitle;
+
+            setCards("sec1Grid", skiingContent.sec1Cards);
+            setCards("sec2Grid", skiingContent.sec2Cards);
+
+            heroSection.style.setProperty("--hero-img", `url("${skiingImage}")`);
+
+            isSnowboarding = false;
+            changeButton.textContent = "Change";
+            return;
+        }
+
+        try {
+            changeButton.disabled = true;
+
+            if (!snowboardingData) {
+                const response = await fetch("js/boardingData.json");
+
+                if (!response.ok) {
+                    throw new Error("Could not load the JSON file.");
                 }
 
-                const values = [
-                    data.header, data.hero.headline, data.hero.description,
-                    data.sections.overview.title, data.sections.overview.subtitle,
-                    data.sections.equipment.title, data.sections.equipment.subtitle
-                ];
-
-                ids.forEach((id, i) => {
-                    document.getElementById(id).textContent = values[i];
-                });
-
-                grids.forEach((grid, i) =>
-                    setCards(grid, data.sections[i === 0 ? "overview" : "equipment"].cards)
-                );
-
-                document.title = data.title;
-                hero.style.setProperty("--hero-img", 'url("img/alpineBoarding.jpg")');
-                button.textContent = "Back to Skiing";
-                snowboarding = true;
-            } catch (error) {
-                console.error(error);
+                snowboardingData = await response.json();
             }
-        } else {
-            ids.forEach((id, i) => {
-                document.getElementById(id).textContent = originalText[i];
-            });
 
-            grids.forEach((grid, i) => setCards(grid, originalCards[i]));
+            const data = snowboardingData;
 
-            document.title = originalTitle;
-            hero.style.setProperty("--hero-img", 'url("img/alpineSki.jpeg")');
-            button.textContent = "Change";
-            snowboarding = false;
+            document.title = data.title;
+            document.getElementById("styleName").textContent = data.header;
+            document.getElementById("heroTitle").textContent = data.hero.headline;
+            document.getElementById("heroDesc").textContent = data.hero.description;
+            document.getElementById("sec1Title").textContent = data.sections.overview.title;
+            document.getElementById("sec1Subtitle").textContent = data.sections.overview.subtitle;
+            document.getElementById("sec2Title").textContent = data.sections.equipment.title;
+            document.getElementById("sec2Subtitle").textContent = data.sections.equipment.subtitle;
+
+            setCards("sec1Grid", data.sections.overview.cards);
+            setCards("sec2Grid", data.sections.equipment.cards);
+
+            const snowboardingImage = new URL(
+                "img/alpineBoarding.jpg",
+                document.baseURI
+            ).href;
+
+            heroSection.style.setProperty(
+                "--hero-img",
+                `url("${snowboardingImage}")`
+            );
+
+            isSnowboarding = true;
+            changeButton.textContent = "Back to Skiing";
+        } catch (error) {
+            console.error("Error loading snowboarding data:", error);
+            alert("Could not load the snowboarding data. Make sure you are using Live Server.");
+        } finally {
+            changeButton.disabled = false;
         }
     });
-
-    function getCards(grid) {
-        return [...document.querySelectorAll(`#${grid} .card`)].map(card => [
-            card.querySelector("h3").textContent,
-            card.querySelector("p").textContent
-        ]);
-    }
-
-    function setCards(grid, cards) {
-        document.querySelectorAll(`#${grid} .card`).forEach((card, i) => {
-            if (cards[i]) {
-                card.querySelector("h3").textContent = cards[i].title;
-                card.querySelector("p").textContent = cards[i].description;
-            }
-        });
-    }
 });
+
+function getCards(gridId) {
+    return Array.from(document.querySelectorAll(`#${gridId} .card`)).map(function (card) {
+        return {
+            title: card.querySelector("h3").textContent,
+            description: card.querySelector("p").textContent
+        };
+    });
+}
+
+function setCards(gridId, cards) {
+    const cardElements = document.querySelectorAll(`#${gridId} .card`);
+
+    cardElements.forEach(function (card, index) {
+        if (cards[index]) {
+            card.querySelector("h3").textContent = cards[index].title;
+            card.querySelector("p").textContent = cards[index].description;
+        }
+    });
+}
