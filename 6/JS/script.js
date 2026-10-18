@@ -270,7 +270,7 @@ async function loadExercises() {
         showMuscleGroups();
     } catch (error) {
         showMessage(
-            "Exercise information could not be loaded. Make sure data/exercises.json exists and run the website through VS Code Live Server or GitHub Pages.",
+            "Exercise information could not be loaded.",
             true
         );
     }
