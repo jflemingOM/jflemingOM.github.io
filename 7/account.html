@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Joseph Fleming">
+    <meta name="description" content="Log in, sign up, and manage your Strength Training account">
+    <title>Account | Strength Training</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <a href="index.html" class="site-logo">Strength Training and Conditioning</a>
+        </div>
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="exercise-explorer.html">Exercise Explorer</a>
+                <a href="training-information.html">Training Information</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="account.html" aria-current="page">Account</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h1 class="section-heading">Account</h1>
+            <p id="account-loading" class="section-intro" role="status">Checking your account...</p>
+
+            <div id="signed-out" hidden>
+                <p class="section-intro">Log in or create an account to access our exercise library and training resources.</p>
+                <div class="contact-form">
+                    <button type="button" id="show-login" class="button" aria-pressed="true">Log In</button>
+                    <button type="button" id="show-signup" class="button" aria-pressed="false">Sign Up</button>
+                </div>
+                <form id="login-form" class="contact-form">
+                    <h2>Log In</h2>
+                    <label for="login-email">Email</label>
+                    <input id="login-email" type="email" autocomplete="email" required>
+                    <label for="login-password">Password</label>
+                    <input id="login-password" type="password" autocomplete="current-password" required>
+                    <button class="button" type="submit">Log In</button>
+                </form>
+                <form id="signup-form" class="contact-form" hidden>
+                    <h2>Create an Account</h2>
+                    <label for="signup-email">Email</label>
+                    <input id="signup-email" type="email" autocomplete="email" required>
+                    <label for="signup-password">Password (at least 6 characters)</label>
+                    <input id="signup-password" type="password" autocomplete="new-password" minlength="6" required>
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input id="signup-confirm" type="password" autocomplete="new-password" minlength="6" required>
+                    <button class="button" type="submit">Create Account</button>
+                </form>
+            </div>
+
+            <div id="signed-in" hidden>
+                <p class="section-intro">Signed in as <strong id="account-email"></strong>.</p>
+                <form id="password-form" class="contact-form">
+                    <h2>Change Password</h2>
+                    <label for="current-password">Current Password</label>
+                    <input id="current-password" type="password" autocomplete="current-password" required>
+                    <label for="new-password">New Password (at least 6 characters)</label>
+                    <input id="new-password" type="password" autocomplete="new-password" minlength="6" required>
+                    <label for="confirm-new-password">Confirm New Password</label>
+                    <input id="confirm-new-password" type="password" autocomplete="new-password" minlength="6" required>
+                    <button class="button" type="submit">Change Password</button>
+                </form>
+                <div class="contact-form">
+                    <button type="button" id="logout-button" class="button">Log Out</button>
+                </div>
+            </div>
+            <p id="account-message" class="section-intro" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Joseph Fleming</p>
+    </footer>
+    <script type="module" src="JS/account.js"></script>
+</body>
+</html>
